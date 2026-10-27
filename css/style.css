@@ -1,0 +1,4320 @@
+@charset "utf-8";
+
+:root {
+  --ink: #473A32;
+  --muted: #827a72;
+  --peach: #f6d2c1;
+  --green: #78967f;
+  --cream: #fffaf6;
+  --blue: #e5edf7
+}
+
+* {
+  box-sizing: border-box
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 82px;
+  -webkit-text-size-adjust: none
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: 'Gowun Dodum', sans-serif;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.65
+}
+
+a {
+  color: inherit;
+  text-decoration: none
+}
+
+button {
+  font: inherit;
+  color: inherit
+}
+
+img {
+  display: block;
+  max-width: 100%
+}
+
+#wrap {
+  overflow: hidden
+}
+
+.site-header {
+  height: 76px;
+  padding: 0 max(calc((100vw - 1180px)/2), 5vw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 18px #39322d0c
+}
+
+.brand img {
+  width: 76px;
+  height: 54px;
+  object-fit: contain
+}
+
+.site-header nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 14px
+}
+
+.site-header nav a {
+  position: relative
+}
+
+.site-header nav a:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #d58c6d;
+  transition: .25s
+}
+
+.site-header nav a:hover:after {
+  width: 100%
+}
+
+.hero {
+  height: min(760px, calc(100vh - 76px));
+  min-height: 570px;
+  position: relative;
+  isolation: isolate;
+  background: #eff1ec
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #16221755, transparent 72%), url('../images/header.jpg') center 47%/cover no-repeat;
+  z-index: -1
+}
+
+.hero-copy {
+  position: absolute;
+  left: max(calc((100vw - 1180px)/2), 9vw);
+  top: 34%;
+  color: white;
+  text-shadow: 0 2px 15px #19221970
+}
+
+.hero-copy>span {
+  font-size: 14px;
+  letter-spacing: .17em
+}
+
+.hero-copy h1 {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 1.32;
+  margin: 18px 0 28px;
+  font-weight: 700;
+  letter-spacing: -.06em
+}
+
+.round-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  background: #fff;
+  color: var(--ink);
+  padding: 13px 21px;
+  border-radius: 30px;
+  text-shadow: none;
+  font-size: 14px
+}
+
+.round-link b {
+  font-size: 19px
+}
+
+.landing-birds span:nth-child(1) {
+  left: 0;
+  top: 0;
+  animation-delay: .35s
+}
+
+.landing-birds span:nth-child(2) {
+  left: 38px;
+  top: 34px;
+  animation-delay: .62s
+}
+
+.landing-birds span:nth-child(3) {
+  left: 77px;
+  top: 67px;
+  animation-delay: .89s
+}
+
+.landing-birds span:nth-child(4) {
+  left: 114px;
+  top: 102px;
+  animation-delay: 1.16s
+}
+
+@keyframes bird-land {
+  0% {
+    opacity: 0;
+    transform: translateY(-110px) rotate(-28deg)
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(8px) rotate(7deg)
+  }
+
+  85% {
+    transform: translateY(-5px) rotate(-4deg)
+  }
+
+  100% {
+    opacity: .9;
+    transform: translateY(0) rotate(0)
+  }
+}
+
+@keyframes branch-sway {
+  to {
+    transform: rotate(1.3deg)
+  }
+}
+
+.section {
+  padding: 112px 24px;
+  text-align: center
+}
+
+.section-title {
+  margin: 0 auto 44px;
+  max-width: 760px
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: .2em;
+  color: #a5826a
+}
+
+.section-title h2,
+.stamp-copy h2 {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 36px;
+  line-height: 1.4;
+  margin: 7px 0 6px;
+  letter-spacing: -.055em
+}
+
+.section-title p,
+.stamp-copy p {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0
+}
+
+.picks {
+  padding-bottom: 86px
+}
+
+.pick-window {
+  max-width: 1180px;
+  margin: auto;
+  overflow: hidden
+}
+
+.pick-track {
+  display: flex;
+  gap: 22px;
+  transition: transform .6s cubic-bezier(.2, .7, .2, 1)
+}
+
+.pick-card {
+  flex: 0 0 calc((100% - 66px)/4);
+  text-align: left
+}
+
+.pick-card img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 18px
+}
+
+.pick-card b,
+.pick-card span {
+  display: block
+}
+
+.pick-card b {
+  font-size: 17px;
+  margin-top: 14px
+}
+
+.pick-card span {
+  font-size: 13px;
+  color: var(--muted)
+}
+
+.carousel-controls {
+  margin: 30px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px
+}
+
+.icon-button,
+.pause-button {
+  border: 1px solid #e9e1db;
+  background: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer
+}
+
+.carousel-dots {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: #d7c9be
+}
+
+.pause-button {
+  font-size: 12px
+}
+
+.map-section {
+  background: #fffdf9;
+  padding-top: 105px;
+  padding-bottom: 122px
+}
+
+.map-layout {
+  max-width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(250px, .65fr);
+  gap: 50px;
+  align-items: center;
+  text-align: left
+}
+
+.map-art {
+  position: relative;
+  max-width: 660px;
+  margin: auto
+}
+
+.map-art>img {
+  width: 100%;
+  max-height: 470px;
+  object-fit: contain
+}
+
+.district {
+  position: absolute;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  padding: 8px 13px;
+  background: #ffffffd9;
+  font-size: 13px;
+  box-shadow: 0 5px 14px #4c534414;
+  cursor: pointer;
+  transition: .2s
+}
+
+.district:hover,
+.district.active {
+  background: #5f846b;
+  color: #fff;
+  transform: translateY(-2px)
+}
+
+.d1 {
+  left: 37%;
+  top: 19%
+}
+
+.d2 {
+  left: 56%;
+  top: 38%
+}
+
+.d3 {
+  left: 64%;
+  top: 52%
+}
+
+.d4 {
+  left: 46%;
+  top: 65%
+}
+
+.d5 {
+  left: 22%;
+  top: 63%
+}
+
+.d6 {
+  left: 67%;
+  top: 75%
+}
+
+.d7 {
+  left: 77%;
+  top: 58%
+}
+
+.place-panel {
+  background: #fff;
+  border: 1px solid #eee7de;
+  border-radius: 20px;
+  padding: 27px 28px;
+  box-shadow: 0 15px 40px #6553400c;
+  min-height: 285px
+}
+
+.place-panel-head span {
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: #a78269
+}
+
+.place-panel h3 {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 26px;
+  margin: 5px 0 17px
+}
+
+.place-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.place-panel li {
+  padding: 11px 0;
+  border-top: 1px solid #f1ece7;
+  font-size: 15px
+}
+
+.place-panel li:before {
+  content: '✳';
+  color: #8ba68b;
+  margin-right: 10px
+}
+
+.place-panel p {
+  font-size: 12px;
+  color: #9b9289;
+  margin: 15px 0 0
+}
+
+.course-section {
+  position: relative;
+  background: linear-gradient(120deg, #fcf0ed, #fffaf4 50%, #edf4f7);
+  padding-bottom: 104px
+}
+
+.course-deco {
+  position: absolute;
+  font-size: 66px;
+  opacity: .72
+}
+
+.deco-left {
+  left: 8%;
+  top: 45%
+}
+
+.course-grid {
+  max-width: 990px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0 auto
+}
+
+.course-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 10px 30px #624e4012;
+  transition: transform .25s
+}
+
+.course-card:hover {
+  transform: translateY(-6px)
+}
+
+.course-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover
+}
+
+.course-card div {
+  padding: 16px 18px 19px
+}
+
+.course-card b,
+.course-card span {
+  display: block
+}
+
+.course-card b {
+  font-size: 16px
+}
+
+.course-card span {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px
+}
+
+.course-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px
+}
+
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 11px 22px;
+  background: #f0c9b8;
+  border-radius: 30px;
+  font-size: 13px;
+  transition: .2s
+}
+
+.pill-button:hover {
+  filter: saturate(1.2);
+  transform: translateY(-2px)
+}
+
+.pill-button span {
+  font-size: 17px
+}
+
+.text-button {
+  font-size: 13px;
+  padding: 9px 14px;
+  color: #665f59
+}
+
+.text-button span {
+  margin-left: 8px
+}
+
+.event-section {
+  background: linear-gradient(#fff9f3, #f9eee5);
+  padding-bottom: 100px
+}
+
+.event-grid {
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px
+}
+
+.event-grid a {
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 17px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #563d2e13;
+  text-align: left
+}
+
+.event-grid img {
+  height: 175px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px
+}
+
+.event-grid b {
+  display: block;
+  padding: 12px 12px 14px;
+  font-size: 14px
+}
+
+.warm {
+  background: #f8d2bd
+}
+
+.stamp-section {
+  position: relative;
+  padding: 82px max(calc((100vw - 1040px)/2), 6vw);
+  background: linear-gradient(128deg, #e8eef7, #f4f5f8 52%, #e4ebf5);
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 70px;
+  overflow: hidden
+}
+
+.stamp-section:before,
+.stamp-section:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #fff9;
+  border-radius: 50%;
+  width: 460px;
+  height: 260px;
+  transform: rotate(-17deg);
+  pointer-events: none
+}
+
+.stamp-section:before {
+  left: -160px;
+  bottom: -100px
+}
+
+.stamp-section:after {
+  right: -170px;
+  top: -160px
+}
+
+.stamp-copy {
+  position: relative;
+  z-index: 1
+}
+
+.stamp-copy h2 {
+  font-size: 31px;
+  margin: 14px 0
+}
+
+.stamp-copy p {
+  font-size: 14px;
+  margin-bottom: 24px
+}
+
+.green {
+  background: #78977d;
+  color: white
+}
+
+.stamp-photos {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  transform: rotate(-2deg);
+  z-index: 1
+}
+
+.stamp-photos img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  padding: 8px 8px 24px;
+  background: #fff;
+  box-shadow: 0 8px 18px #43526922;
+  transform: rotate(3deg)
+}
+
+.stamp-photos img:nth-child(2n) {
+  transform: rotate(-5deg);
+  margin-top: 15px
+}
+
+.stamp-bird {
+  position: absolute;
+  width: 105px;
+  right: 27%;
+  top: 10%;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .9s, transform .9s
+}
+
+.stamp-section.is-visible .stamp-bird {
+  opacity: 1;
+  transform: translateY(0)
+}
+
+.goods-section {
+  padding-bottom: 104px
+}
+
+.goods-grid {
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 0 auto 32px
+}
+
+.goods-grid a {
+  background: #faf4ef;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: left
+}
+
+.goods-grid img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #f3ebe5
+}
+
+.goods-grid b {
+  display: block;
+  padding: 14px 15px 16px;
+  font-size: 14px
+}
+
+.site-footer {
+  min-height: 310px;
+  padding: 90px 24px 27px;
+  text-align: center;
+  background: linear-gradient(180deg, #e8edf5 0 40%, #f7cbb8 40%);
+  position: relative
+}
+
+.site-footer:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/footer.jpg') center 32%/cover no-repeat;
+  opacity: .92;
+  z-index: 0
+}
+
+.site-footer>* {
+  position: relative;
+  z-index: 1
+}
+
+.site-footer img {
+  width: 90px;
+  height: 44px;
+  object-fit: contain;
+  margin: 14px auto 8px
+}
+
+.site-footer p {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 0 8px
+}
+
+.site-footer small {
+  font-size: 10px;
+  color: #6b5148
+}
+
+.subpage-hero {
+  padding: 92px 24px 75px;
+  text-align: center;
+  background: linear-gradient(135deg, #f8eee9, #edf3f4)
+}
+
+.subpage-hero h1 {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 44px;
+  margin: 8px 0
+}
+
+.subpage-hero p {
+  color: var(--muted);
+  margin: 0
+}
+
+.subpage-content {
+  max-width: 1050px;
+  margin: auto;
+  padding: 70px 24px 110px
+}
+
+.subpage-content h2 {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 30px
+}
+
+.subpage-content>p {
+  color: var(--muted)
+}
+
+.subpage-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 28px 0 54px
+}
+
+.subpage-cards article {
+  background: #fffaf6;
+  border-radius: 14px;
+  overflow: hidden
+}
+
+.subpage-cards img {
+  height: 190px;
+  width: 100%;
+  object-fit: cover
+}
+
+.subpage-cards h3,
+.subpage-cards p {
+  margin: 12px 16px
+}
+
+.subpage-cards p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 18px
+}
+
+.back-home {
+  display: inline-flex;
+  margin-top: 18px;
+  color: #795e50;
+  border-bottom: 1px solid #d4b8a8;
+  padding-bottom: 3px
+}
+
+.course-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0
+}
+
+.course-tabs a {
+  padding: 10px 17px;
+  border: 1px solid #e6ddd7;
+  border-radius: 25px
+}
+
+.course-tabs a:hover {
+  background: #78977d;
+  color: #fff
+}
+
+.notice-card {
+  border-top: 1px solid #eee4dc;
+  padding: 20px 0
+}
+
+.notice-card b {
+  font-size: 18px
+}
+
+.notice-card p {
+  color: var(--muted);
+  margin: 5px 0
+}
+
+@media(max-width:800px) {
+  .site-header {
+    height: auto;
+    min-height: 68px;
+    padding: 8px 18px;
+    align-items: flex-start
+  }
+
+  .brand img {
+    width: 57px;
+    height: 48px
+  }
+
+  .site-header nav {
+    gap: 10px 16px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    max-width: 75%;
+    font-size: 12px;
+    padding: 8px 0
+  }
+
+  .hero {
+    min-height: 600px;
+    height: 80vh
+  }
+
+  .hero-copy {
+    left: 8%;
+    top: 35%
+  }
+
+  .hero-copy h1 {
+    font-size: 48px
+  }
+
+  .branch {
+    width: 48vw
+  }
+
+  .landing-birds {
+    left: 56%;
+    transform: scale(.8);
+    transform-origin: bottom left
+  }
+
+  .section {
+    padding: 80px 20px
+  }
+
+  .pick-card {
+    flex-basis: calc((100% - 22px)/2)
+  }
+
+  .pick-card img {
+    height: 190px
+  }
+
+  .map-layout {
+    grid-template-columns: 1fr;
+    gap: 20px
+  }
+
+  .map-art {
+    width: 100%
+  }
+
+  .place-panel {
+    max-width: 600px;
+    width: 100%;
+    margin: auto
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+    max-width: 460px
+  }
+
+  .course-card img {
+    height: 220px
+  }
+
+  .course-deco {
+    display: none
+  }
+
+  .event-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 560px
+  }
+
+  .event-grid img {
+    height: 165px
+  }
+
+  .stamp-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 70px 8vw
+  }
+
+  .stamp-copy {
+    text-align: center
+  }
+
+  .stamp-photos {
+    max-width: 600px;
+    margin: auto;
+    width: 100%
+  }
+
+  .stamp-bird {
+    right: 10%;
+    top: 25%;
+    width: 75px
+  }
+
+  .goods-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 550px
+  }
+
+  .goods-grid img {
+    height: 200px
+  }
+
+  .subpage-cards {
+    grid-template-columns: 1fr 1fr
+  }
+}
+
+@media(max-width:480px) {
+  body {
+    font-size: 15px
+  }
+
+  .site-header nav {
+    gap: 6px 12px;
+    font-size: 11px
+  }
+
+  .hero {
+    min-height: 520px;
+    height: 74vh
+  }
+
+  .hero-copy h1 {
+    font-size: 39px
+  }
+
+  .hero-copy>span {
+    font-size: 11px
+  }
+
+  .round-link {
+    font-size: 12px;
+    padding: 10px 15px
+  }
+
+  .branch {
+    width: 58vw
+  }
+
+  .landing-birds {
+    left: 57%;
+    bottom: 3%;
+    transform: scale(.65);
+    transform-origin: bottom left
+  }
+
+  .section-title h2 {
+    font-size: 29px
+  }
+
+  .section-title {
+    margin-bottom: 30px
+  }
+
+  .pick-card {
+    flex-basis: 82%
+  }
+
+  .pick-card img {
+    height: 220px
+  }
+
+  .district {
+    padding: 6px 8px;
+    font-size: 10px
+  }
+
+  .d1 {
+    left: 35%;
+    top: 20%
+  }
+
+  .d2 {
+    left: 54%;
+    top: 40%
+  }
+
+  .d3 {
+    left: 61%;
+    top: 54%
+  }
+
+  .d4 {
+    left: 43%;
+    top: 66%
+  }
+
+  .d5 {
+    left: 17%;
+    top: 64%
+  }
+
+  .d6 {
+    left: 65%;
+    top: 76%
+  }
+
+  .d7 {
+    left: 76%;
+    top: 59%
+  }
+
+  .place-panel {
+    padding: 22px
+  }
+
+  .course-actions {
+    flex-direction: column;
+    gap: 7px
+  }
+
+  .event-grid {
+    gap: 10px
+  }
+
+  .event-grid img {
+    height: 125px
+  }
+
+  .event-grid b {
+    font-size: 12px;
+    padding: 9px
+  }
+
+  .stamp-section {
+    padding: 60px 22px
+  }
+
+  .stamp-photos {
+    gap: 12px
+  }
+
+  .stamp-photos img {
+    height: 122px
+  }
+
+  .goods-grid {
+    gap: 12px
+  }
+
+  .goods-grid img {
+    height: 150px
+  }
+
+  .subpage-hero {
+    padding: 70px 20px 58px
+  }
+
+  .subpage-hero h1 {
+    font-size: 34px
+  }
+
+  .subpage-cards {
+    grid-template-columns: 1fr
+  }
+
+  .subpage-content {
+    padding: 52px 20px 75px
+  }
+}
+
+/* Main page motion and interaction refinements */
+.hero {
+  height: clamp(390px, 44vw, 560px);
+  min-height: 390px;
+  background: #fff;
+  overflow: visible
+}
+
+.hero-image {
+  inset: 0 0 25px;
+  background: linear-gradient(90deg, #16221766, transparent 76%), url('../images/header.jpg') center 49%/cover no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 93% 89%, 85% 92%, 74% 94%, 63% 93%, 52% 96%, 39% 95%, 27% 98%, 14% 96%, 0 92%);
+  z-index: 0
+}
+
+.branch {
+  left: -170px;
+  width: 311px;
+}
+
+.hero-copy {
+  z-index: 1;
+  top: 28%
+}
+
+.branch {
+  z-index: 2;
+  bottom: -27px;
+  width: min(370px, 31vw)
+}
+
+.landing-birds {
+  z-index: 3;
+  left: 58%;
+  bottom: -20px;
+  width: min(340px, 32vw);
+  height: 120px
+}
+
+.landing-birds img {
+  position: absolute;
+  width: 64px;
+  height: auto;
+  opacity: 0;
+  animation: bird-land 2.5s cubic-bezier(.19, .8, .3, 1) both
+}
+
+.landing-birds img:nth-child(1) {
+  left: 0;
+  bottom: 65px;
+  animation-delay: .35s
+}
+
+.landing-birds img:nth-child(2) {
+  left: 70px;
+  bottom: 45px;
+  width: 56px;
+  animation-delay: .72s
+}
+
+.landing-birds img:nth-child(3) {
+  left: 145px;
+  bottom: 24px;
+  width: 62px;
+  animation-delay: 1.05s
+}
+
+.landing-birds img:nth-child(4) {
+  left: 220px;
+  bottom: 2px;
+  width: 55px;
+  animation-delay: 1.38s
+}
+
+@keyframes bird-land {
+  0% {
+    opacity: 0;
+    transform: translateY(-470px) rotate(-28deg) scale(.72)
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateY(10px) rotate(7deg) scale(1)
+  }
+
+  86% {
+    transform: translateY(-6px) rotate(-4deg)
+  }
+
+  100% {
+    opacity: .96;
+    transform: translateY(0) rotate(0)
+  }
+}
+
+.picks {
+  padding-top: 64px
+}
+
+.pick-card {
+  flex-basis: calc((100% - 88px)/5)
+}
+
+.pick-card img {
+  height: 180px;
+  border-radius: 16px
+}
+
+.pick-track {
+  gap: 22px
+}
+
+.map-hint {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 2px 0 12px
+}
+
+.map-note {
+  font-size: 12px;
+  color: #9b9289;
+  margin: 15px 0 0
+}
+
+.place-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px
+}
+
+.place-table[hidden],
+.course-panel[hidden] {
+  display: none
+}
+
+.place-table th,
+.place-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #f0ebe5;
+  text-align: left
+}
+
+.place-table thead th {
+  font-size: 12px;
+  color: #8b8178;
+  background: #faf7f3
+}
+
+.place-table th:first-child,
+.place-table td:first-child {
+  width: 52px;
+  text-align: center;
+  color: #8ba68b
+}
+
+.course-section {
+  background: linear-gradient(120deg, #fcf0ed, #fffaf4 50%, #edf4f7);
+  padding-top: 96px;
+  padding-bottom: 72px
+}
+
+.course-carousel {
+  max-width: 990px;
+  margin: auto
+}
+
+.course-panel {
+  animation: panel-in .42s ease both
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(9px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.course-grid {
+  position: relative;
+  z-index: 1
+}
+
+.course-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin: 24px auto 0
+}
+
+.course-switch {
+  width: 11px;
+  height: 11px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: #d7d1ca;
+  cursor: pointer;
+  transition: transform .2s, background .2s
+}
+
+.course-switch[aria-pressed="true"] {
+  background: #78967f;
+  transform: scale(1.25)
+}
+
+.course-actions {
+  margin-top: 24px
+}
+
+.stamp-section {
+  isolation: isolate
+}
+
+.stamp-birds {
+  position: absolute;
+  z-index: 2;
+  right: 23%;
+  top: 12%;
+  width: 170px;
+  height: 120px;
+  pointer-events: none
+}
+
+.stamp-birds img {
+  position: absolute;
+  width: 96px;
+  opacity: 0;
+  transform: translateY(35px) scale(.94);
+  transition: opacity .85s ease, transform .85s ease
+}
+
+.stamp-birds img:first-child {
+  left: 0;
+  top: 25px
+}
+
+.stamp-birds img:last-child {
+  right: 0;
+  top: 0;
+  width: 72px;
+  transition-delay: .16s
+}
+
+.stamp-section.is-visible .stamp-birds img {
+  opacity: 1;
+  transform: translateY(0) scale(1)
+}
+
+@media(max-width:800px) {
+  .hero {
+    height: 460px;
+    min-height: 420px
+  }
+
+  .hero-image {
+    inset: 0 0 20px
+  }
+
+  .hero-copy {
+    top: 27%
+  }
+
+  .branch {
+    width: 45vw;
+    bottom: -20px
+  }
+
+  .landing-birds {
+    left: 54%;
+    bottom: -14px;
+    width: 42vw
+  }
+
+  .landing-birds img {
+    width: 48px
+  }
+
+  .landing-birds img:nth-child(2) {
+    left: 50px;
+    width: 45px
+  }
+
+  .landing-birds img:nth-child(3) {
+    left: 100px;
+    width: 47px
+  }
+
+  .landing-birds img:nth-child(4) {
+    left: 150px;
+    width: 42px
+  }
+
+  .pick-card {
+    flex-basis: calc((100% - 22px)/2)
+  }
+
+  .pick-card img {
+    height: 190px
+  }
+
+  .course-section {
+    padding-bottom: 65px
+  }
+
+  .stamp-birds {
+    right: 9%;
+    top: 25%;
+    transform: scale(.75);
+    transform-origin: top right
+  }
+}
+
+@media(max-width:480px) {
+  .hero {
+    height: 390px;
+    min-height: 370px
+  }
+
+  .hero-image {
+    inset: 0 0 14px
+  }
+
+  .hero-copy {
+    top: 24%
+  }
+
+  .branch {
+    width: 56vw;
+    bottom: -16px
+  }
+
+  .landing-birds {
+    left: 51%;
+    bottom: -5px;
+    width: 47vw;
+    height: 85px
+  }
+
+  .landing-birds img {
+    width: 38px
+  }
+
+  .landing-birds img:nth-child(2) {
+    left: 40px;
+    width: 35px
+  }
+
+  .landing-birds img:nth-child(3) {
+    left: 80px;
+    width: 36px
+  }
+
+  .landing-birds img:nth-child(4) {
+    left: 120px;
+    width: 33px
+  }
+
+  .picks {
+    padding-top: 48px
+  }
+
+  .pick-card {
+    flex-basis: 82%
+  }
+
+  .pick-card img {
+    height: 220px
+  }
+
+  .stamp-birds {
+    right: 3%;
+    top: 28%;
+    transform: scale(.55)
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important
+  }
+
+  .landing-birds img {
+    opacity: .9;
+    transform: none
+  }
+}
+
+.district {
+  font-size: 11px;
+  padding: 5px 7px;
+  white-space: nowrap;
+  transform: translate(-50%, -50%)
+}
+
+.district:hover,
+.district.active {
+  transform: translate(-50%, -52%)
+}
+
+.d8 {
+  left: 57%;
+  top: 63%
+}
+
+.d9 {
+  left: 69%;
+  top: 63%
+}
+
+.d10 {
+  left: 79%;
+  top: 69%
+}
+
+.d11 {
+  left: 31%;
+  top: 65%
+}
+
+.d12 {
+  left: 19%;
+  top: 61%
+}
+
+.d13 {
+  left: 39%;
+  top: 63%
+}
+
+.d1 {
+  left: 45%;
+  top: 24%
+}
+
+.d2 {
+  left: 31%;
+  top: 33%
+}
+
+.d3 {
+  left: 32%;
+  top: 49%
+}
+
+.d4 {
+  left: 54%;
+  top: 39%
+}
+
+.d5 {
+  left: 58%;
+  top: 48%
+}
+
+.d6 {
+  left: 67%;
+  top: 44%
+}
+
+.d7 {
+  left: 77%;
+  top: 51%
+}
+
+@media(max-width:480px) {
+  .district {
+    font-size: 8px;
+    padding: 4px 5px
+  }
+
+  .d1 {
+    left: 45%;
+    top: 24%
+  }
+
+  .d2 {
+    left: 31%;
+    top: 33%
+  }
+
+  .d3 {
+    left: 32%;
+    top: 49%
+  }
+
+  .d4 {
+    left: 54%;
+    top: 39%
+  }
+
+  .d5 {
+    left: 58%;
+    top: 48%
+  }
+
+  .d6 {
+    left: 67%;
+    top: 44%
+  }
+
+  .d7 {
+    left: 77%;
+    top: 51%
+  }
+
+  .d8 {
+    left: 57%;
+    top: 63%
+  }
+
+  .d9 {
+    left: 69%;
+    top: 63%
+  }
+
+  .d10 {
+    left: 79%;
+    top: 69%
+  }
+
+  .d11 {
+    left: 31%;
+    top: 65%
+  }
+
+  .d12 {
+    left: 19%;
+    top: 61%
+  }
+
+  .d13 {
+    left: 39%;
+    top: 63%
+  }
+}
+
+/* Header scene: overlay navigation on the landscape */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 94vw);
+  height: 82px;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  box-shadow: none;
+  z-index: 20
+}
+
+.site-header .brand {
+  flex: 0 0 auto
+}
+
+.site-header .brand img {
+  width: 104px;
+  height: 68px;
+  object-fit: contain
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+  max-width: none;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #342a24
+}
+
+.site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-shadow: 0 1px 2px #fff9;
+  transition: color .18s, background-color .18s, border-color .18s, box-shadow .18s
+}
+
+.site-header nav a:after {
+  display: none
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: #231912;
+  background: #fffdf4;
+  border-color: #514237;
+  box-shadow: 0 2px 10px #21160e28;
+  text-shadow: none;
+  outline: none
+}
+
+.site-header nav a[aria-current="page"] {
+  border-color: #514237;
+  background: #fffdf4;
+  box-shadow: 0 2px 10px #21160e18;
+  text-shadow: none
+}
+
+.hero {
+  height: min(100vh, 1000px);
+  min-height: 620px
+}
+
+.hero-image {
+  inset: 0 0 26px;
+  background: linear-gradient(180deg, #ffffff14 0%, transparent 19%), url('../images/header.jpg') center center/cover no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 93% 89%, 85% 92%, 74% 94%, 63% 93%, 52% 96%, 39% 95%, 27% 98%, 14% 96%, 0 92%);
+  z-index: 0
+}
+
+.hero-copy {
+  display: none
+}
+
+.branch {
+  display: none
+}
+
+.hero-footprints {
+  position: absolute;
+  z-index: 3;
+  width: clamp(100px, 12vw, 190px);
+  height: auto;
+  right: 20%;
+  bottom: -48px;
+  pointer-events: none;
+  opacity: .68
+}
+
+@media(max-width:800px) {
+  .site-header {
+    width: 96vw;
+    height: 76px;
+    padding: 0;
+    align-items: center
+  }
+
+  .site-header .brand img {
+    width: 72px;
+    height: 56px
+  }
+
+  .site-header nav {
+    gap: 4px;
+    max-width: 80%;
+    font-size: 12px
+  }
+
+  .site-header nav a {
+    min-height: 36px;
+    padding: 5px 7px
+  }
+
+  .hero {
+    height: 86vh;
+    min-height: 520px
+  }
+
+  .hero-image {
+    inset: 0 0 22px
+  }
+
+  .hero-footprints {
+    right: 13%;
+    bottom: -36px;
+    width: 115px
+  }
+}
+
+@media(max-width:480px) {
+  .site-header {
+    height: 70px;
+    width: 98vw
+  }
+
+  .site-header .brand img {
+    width: 58px;
+    height: 48px
+  }
+
+  .site-header nav {
+    gap: 1px;
+    max-width: 83%;
+    font-size: 10px
+  }
+
+  .site-header nav a {
+    min-height: 32px;
+    padding: 4px 5px
+  }
+
+  .hero {
+    height: 76vh;
+    min-height: 450px
+  }
+
+  .hero-footprints {
+    right: 9%;
+    bottom: -26px;
+    width: 90px
+  }
+}
+
+.branch {
+  display: block;
+  position: absolute;
+  left: -42px;
+  bottom: -72px;
+  width: min(40vw, 720px);
+  height: auto;
+  max-width: none;
+  z-index: 3;
+  pointer-events: none;
+  transform: none;
+  animation: none
+}
+
+.perched-bird {
+  position: absolute;
+  z-index: 5;
+  height: auto;
+  max-width: none;
+  opacity: 0;
+  pointer-events: none;
+  animation: bird-arrival 3.1s cubic-bezier(.2, .75, .25, 1) both
+}
+
+.bird-white {
+  width: clamp(48px, 4.2vw, 78px);
+  left: clamp(225px, 19vw, 365px);
+  bottom: 112px;
+  animation-delay: .55s
+}
+
+.bird-brown {
+  width: clamp(54px, 4.8vw, 88px);
+  left: clamp(165px, 14vw, 270px);
+  bottom: 8px;
+  animation-delay: 1.15s
+}
+
+@keyframes bird-arrival {
+  0% {
+    opacity: 0;
+    transform: translateY(-58vh) rotate(-10deg)
+  }
+
+  68% {
+    opacity: 1;
+    transform: translateY(9px) rotate(3deg)
+  }
+
+  84% {
+    transform: translateY(-4px) rotate(-1deg)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0)
+  }
+}
+
+.hero-footprints {
+  position: absolute;
+  z-index: 4;
+  width: clamp(92px, 10vw, 160px);
+  right: 19%;
+  bottom: -40px;
+  height: auto;
+  pointer-events: none;
+  opacity: .72
+}
+
+@media(max-width:800px) {
+  .branch {
+    width: 66vw;
+    left: -45px;
+    bottom: -48px
+  }
+
+  .bird-white {
+    width: 52px;
+    left: clamp(150px, 28vw, 230px);
+    bottom: 74px
+  }
+
+  .bird-brown {
+    width: 58px;
+    left: clamp(108px, 20vw, 170px);
+    bottom: 0
+  }
+
+  .hero-footprints {
+    right: 10%;
+    bottom: -30px;
+    width: 105px
+  }
+}
+
+@media(max-width:480px) {
+  .branch {
+    width: 78vw;
+    max-width: 350px;
+    left: -50px;
+    bottom: -30px
+  }
+
+  .bird-white {
+    width: 43px;
+    left: 142px;
+    bottom: 47px
+  }
+
+  .bird-brown {
+    width: 48px;
+    left: 95px;
+    bottom: -5px
+  }
+
+  .hero-footprints {
+    right: 8%;
+    bottom: -24px;
+    width: 82px
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .perched-bird {
+    opacity: 1;
+    animation: none
+  }
+}
+
+
+
+@media(max-width:480px) {
+  .branch {
+    left: -9vw;
+    bottom: 18px;
+    width: min(126vw, 560px)
+  }
+
+  .perched-bird {
+    width: 72px
+  }
+
+  .bird-white {
+    left: 54.5%;
+    top: 40%
+  }
+
+  .bird-brown {
+    left: 43%;
+    top: 68.5%
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .perched-bird {
+    opacity: 1;
+    animation: none;
+    transform: translate(-50%, -50%) rotate(var(--land-angle))
+  }
+}
+
+.branch-scene .perched-bird {
+  position: absolute;
+  z-index: 2;
+  top: var(--landing-y);
+  left: var(--landing-x);
+  bottom: auto;
+  width: clamp(72px, 7.4vw, 92px);
+  height: auto;
+  max-width: none;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center;
+  animation: branch-bird-arrival 3.4s cubic-bezier(.2, .72, .25, 1) both
+}
+
+.branch-scene .bird-white {
+  --landing-x: 50%;
+  --landing-y: 44%;
+  --land-angle: -20deg;
+  animation-delay: .45s
+}
+
+.branch-scene .bird-brown {
+  --landing-x: 40%;
+  --landing-y: 67%;
+  --land-angle: 0deg;
+  animation-delay: 1.1s
+}
+
+@keyframes branch-bird-arrival {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 72vh)) rotate(calc(var(--land-angle) - 8deg))
+  }
+
+  72% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + 8px)) rotate(calc(var(--land-angle) + 2deg))
+  }
+
+  86% {
+    transform: translate(-50%, calc(-50% - 3px)) rotate(calc(var(--land-angle) - 1deg))
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--land-angle))
+  }
+}
+
+@media(max-width:800px) {
+  .branch-scene {
+    left: -9vw;
+    top: -10px;
+    width: min(126vw, 740px)
+  }
+
+  .branch-scene .perched-bird {
+    width: clamp(66px, 10vw, 86px)
+  }
+}
+
+@media(max-width:480px) {
+  .branch-scene {
+    left: -9vw;
+    top: -8px;
+    width: min(126vw, 740px)
+  }
+
+  .branch-scene .perched-bird {
+    width: 68px
+  }
+}
+
+
+
+/* Art direction and interactions shared by the landing page and subpages */
+.site-header nav a:hover,
+.site-header nav a:focus-visible,
+.site-header nav a[aria-current="page"] {
+  outline: 1px solid #514237;
+  outline-offset: 1px;
+  background: #fffdf4;
+  color: #231912;
+  box-shadow: 0 2px 10px #21160e22;
+  text-shadow: none;
+}
+
+.site-header nav a[aria-current="page"] {
+  font-weight: 700;
+}
+
+.subpage-hero {
+  padding-top: 150px;
+}
+
+.pick-track {
+  transition-duration: 1s;
+}
+
+.pick-card img {
+  border-radius: 12px;
+}
+
+.event-section {
+  background-color: #f7e5da;
+  background-image: url('../images/hanji hambuger.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.stamp-section {
+  background-color: #dce6f3;
+  background-image: url('../images/hanji hambuger.jpg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+}
+
+.stamp-photos img {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (max-width: 800px) {
+
+  .event-section,
+  .stamp-section {
+    background-size: auto 100%;
+  }
+
+  .stamp-section {
+    background-position: 58% bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pick-track {
+    transition-duration: .01ms;
+  }
+
+  .perched-bird {
+    animation: none;
+    opacity: 1;
+  }
+
+  .stamp-birds img {
+    transition-duration: .01ms;
+  }
+}
+
+
+
+/* Final reference alignment: use the supplied hanji artwork as the two paper panels. */
+.event-section {
+  background-color: #f6d9c8;
+  background-image: url('../images/hanji hambuger.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.stamp-section {
+  background-color: #dce6f3;
+  background-image: url('../images/hanji hambuger.jpg');
+  background-repeat: no-repeat;
+  /* The source has peach paper on top and sky paper below; anchor the lower sky area here. */
+  background-position: center bottom;
+  background-size: auto 300%;
+}
+
+.stamp-photos img {
+  pointer-events: none;
+  cursor: default;
+}
+
+.map-hint[hidden],
+.place-table[hidden] {
+  display: none;
+}
+
+.district:focus-visible,
+.icon-button:focus-visible,
+.pause-button:focus-visible,
+.course-switch:focus-visible,
+.pill-button:focus-visible {
+  outline: 2px solid #514237;
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .event-section {
+    background-size: auto 100%;
+  }
+
+  .stamp-section {
+    background-size: auto 300%;
+    background-position: center bottom;
+  }
+}
+
+/* The hanji image is shared across two equal-height sections. Its paper seam
+   sits at 70% of the source, so each half displays one paper color. */
+.event-section {
+  background-image: url('../images/hanji hambuger.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% 142.857%;
+}
+
+
+.stamp-photos img {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (max-width: 800px) {
+
+  .event-section,
+  .stamp-section {
+    background-size: 100% 142.857%;
+  }
+}
+
+/* Match the reference's even festival/stamp split using the source paper seam. */
+@media (min-width: 801px) {
+
+  .event-section,
+  .stamp-section {
+    height: clamp(600px, 40vw, 800px);
+    min-height: 0;
+  }
+}
+
+
+
+.stamp-section {
+  background-color: #dce6f3;
+  background-image: url('../images/hanji hambuger.jpg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  /* Crop from the source seam to its bottom so the stamp half stays sky blue. */
+  background-size: 100% 333.333%;
+}
+
+.stamp-photos img {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (max-width: 800px) {
+
+  .event-section,
+  .stamp-section {
+    height: auto;
+    min-height: 0;
+  }
+
+  .event-section {
+    background-size: 100% 142.857%;
+    background-position: center top;
+  }
+
+  .stamp-section {
+    background-size: 100% 333.333%;
+    background-position: center bottom;
+  }
+}
+
+/* Exact split from the supplied composite: equal section heights and exact source halves. */
+@media (min-width: 801px) {
+
+  .event-section,
+  .stamp-section {
+    height: clamp(600px, 40vw, 800px);
+    min-height: 0;
+  }
+}
+
+.event-section,
+.stamp-section {
+  background-image: url('../images/hanji-composite.png');
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+}
+
+.event-section {
+  background-position: center top;
+}
+
+.stamp-section {
+  background-position: center bottom;
+}
+
+.stamp-photos img {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (max-width: 800px) {
+
+  .event-section,
+  .stamp-section {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+/* Small placement refinements from the latest reference screenshot. */
+.event-section {
+  padding-top: 80px;
+}
+
+.map-art .d1 {
+  left: 43%;
+  top: 23.5%;
+}
+
+.map-art .d2 {
+  left: 30%;
+  top: 32%;
+}
+
+.map-art .d3 {
+  left: 31%;
+  top: 48.7%;
+}
+
+.map-art .d4 {
+  left: 54.3%;
+  top: 38.2%;
+}
+
+.map-art .d5 {
+  left: 58.4%;
+  top: 48.7%;
+}
+
+.map-art .d6 {
+  left: 68.3%;
+  top: 43.5%;
+}
+
+.map-art .d7 {
+  left: 76.8%;
+  top: 50.6%;
+}
+
+.map-art .d8 {
+  left: 57.4%;
+  top: 63.4%;
+}
+
+.map-art .d9 {
+  left: 69.6%;
+  top: 62.3%;
+}
+
+.map-art .d10 {
+  left: 78.9%;
+  top: 69%;
+}
+
+.map-art .d11 {
+  left: 30%;
+  top: 62.3%;
+}
+
+.map-art .d12 {
+  left: 19.3%;
+  top: 60.7%;
+}
+
+.map-art .d13 {
+  left: 38.3%;
+  top: 63%;
+}
+
+/* Button centers follow the district label centers in the supplied source map. */
+.map-art .d1 {
+  left: 42.6%;
+  top: 14.6%;
+}
+
+/* 온천1동 */
+.map-art .d2 {
+  left: 26.8%;
+  top: 25.5%;
+}
+
+/* 온천2동 */
+.map-art .d3 {
+  left: 26.8%;
+  top: 45.8%;
+}
+
+/* 온천3동 */
+.map-art .d4 {
+  left: 56.6%;
+  top: 34.4%;
+}
+
+/* 명륜동 */
+.map-art .d5 {
+  left: 63%;
+  top: 45.8%;
+}
+
+/* 북산동 */
+.map-art .d6 {
+  left: 75.6%;
+  top: 39.6%;
+}
+
+/* 명장2동 */
+.map-art .d7 {
+  left: 86.8%;
+  top: 49%;
+}
+
+/* 명장1동 */
+.map-art .d8 {
+  left: 61.4%;
+  top: 64%;
+}
+
+/* 수민동 */
+.map-art .d9 {
+  left: 76.6%;
+  top: 64%;
+}
+
+/* 안락1동 */
+.map-art .d10 {
+  left: 89.8%;
+  top: 69.8%;
+}
+
+/* 안락2동 */
+.map-art .d11 {
+  left: 27%;
+  top: 63%;
+}
+
+/* 사직1동 */
+.map-art .d12 {
+  left: 13.2%;
+  top: 64%;
+}
+
+/* 사직2동 */
+.map-art .d13 {
+  left: 36.6%;
+  top: 64%;
+}
+
+/* 사직3동 */
+
+/* Final layout corrections for the supplied Dongnae reference */
+.branch-scene {
+  left: clamp(-90px, -5vw, -30px);
+  top: auto;
+  bottom: -22px;
+  width: clamp(390px, 42vw, 620px);
+  height: auto;
+  aspect-ratio: 1;
+  z-index: 4;
+}
+
+.branch-scene .branch {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.branch-scene .perched-bird {
+  width: clamp(58px, 7vw, 90px);
+  animation-duration: 3.8s;
+}
+
+.branch-scene .bird-white {
+  --landing-x: 50%;
+  --landing-y: 44%;
+  --land-angle: -20deg;
+}
+
+.branch-scene .bird-brown {
+  --landing-x: 40%;
+  --landing-y: 67%;
+  --land-angle: 0deg;
+}
+
+.hero-footprints {
+  right: 15%;
+  bottom: -44px;
+  width: clamp(100px, 12vw, 175px);
+}
+
+.picks {
+  padding-top: 54px;
+}
+
+.pick-track {
+  will-change: transform;
+}
+
+.pick-card {
+  flex-basis: calc((100% - 88px) / 5);
+}
+
+.pick-card img {
+  height: 180px;
+}
+
+.map-layout {
+  grid-template-columns: minmax(0, 1.3fr) minmax(275px, .7fr);
+}
+
+.map-art {
+  width: 100%;
+}
+
+.place-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+.place-table[hidden],
+.course-panel[hidden] {
+  display: none;
+}
+
+.place-table th,
+.place-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #f0ebe5;
+  text-align: left;
+}
+
+.place-table thead th {
+  color: #8b8178;
+  background: #faf7f3;
+  font-size: 12px;
+}
+
+.place-table th:first-child,
+.place-table td:first-child {
+  width: 52px;
+  text-align: center;
+  color: #8ba68b;
+}
+
+.map-note {
+  margin-top: 18px;
+}
+
+.map-art .d1 {
+  left: 44%;
+  top: 22.5%;
+}
+
+.map-art .d2 {
+  left: 31%;
+  top: 32%;
+}
+
+.map-art .d3 {
+  left: 31%;
+  top: 49%;
+}
+
+.map-art .d4 {
+  left: 54.5%;
+  top: 39%;
+}
+
+.map-art .d5 {
+  left: 61.5%;
+  top: 48.5%;
+}
+
+.map-art .d6 {
+  left: 74.5%;
+  top: 39.5%;
+}
+
+.map-art .d7 {
+  left: 86%;
+  top: 49%;
+}
+
+.map-art .d8 {
+  left: 57%;
+  top: 63%;
+}
+
+.map-art .d9 {
+  left: 76.5%;
+  top: 64%;
+}
+
+.map-art .d10 {
+  left: 90%;
+  top: 70%;
+}
+
+.map-art .d11 {
+  left: 28%;
+  top: 63%;
+}
+
+.map-art .d12 {
+  left: 14%;
+  top: 62%;
+}
+
+.map-art .d13 {
+  left: 39%;
+  top: 62%;
+}
+
+.event-section,
+.stamp-section {
+  background-image: url('../images/hanji-composite.png');
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+}
+
+.event-section {
+  background-position: center top;
+}
+
+.stamp-section {
+  background-position: center bottom;
+}
+
+.stamp-photos img {
+  pointer-events: none;
+  cursor: default;
+}
+
+.stamp-birds {
+  z-index: 2;
+}
+
+.stamp-birds img {
+  pointer-events: none;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible,
+.site-header nav a[aria-current="page"] {
+  outline: 1px solid #514237;
+  outline-offset: 1px;
+  border-color: #514237;
+  background: #fffdf4;
+  color: #231912;
+  box-shadow: 0 2px 10px #21160e22;
+  text-shadow: none;
+}
+
+.site-header nav a[aria-current="page"] {
+  font-weight: 700;
+}
+
+@media (min-width: 801px) {
+
+  .event-section,
+  .stamp-section {
+    height: clamp(600px, 40vw, 800px);
+    min-height: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .branch-scene {
+    left: -10vw;
+    bottom: -16px;
+    width: min(112vw, 520px);
+  }
+
+  .branch-scene .perched-bird {
+    width: clamp(62px, 11vw, 84px);
+  }
+
+  .hero-footprints {
+    right: 10%;
+    bottom: -34px;
+    width: 112px;
+  }
+
+  .map-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .map-art {
+    max-width: 600px;
+  }
+
+  .place-panel {
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .event-section,
+  .stamp-section {
+    height: auto;
+    min-height: 0;
+    background-size: 100% 200%;
+  }
+}
+
+@media (max-width: 480px) {
+  .branch-scene {
+    left: -17vw;
+    bottom: -12px;
+    width: min(120vw, 470px);
+  }
+
+  .branch-scene .perched-bird {
+    width: 68px;
+  }
+
+  .hero-footprints {
+    right: 8%;
+    bottom: -26px;
+    width: 88px;
+  }
+
+  .pick-card {
+    flex-basis: 82%;
+  }
+
+  .pick-card img {
+    height: 220px;
+  }
+
+  .event-section {
+    background-size: auto 200%;
+    background-position: 50% 0;
+  }
+
+  .stamp-section {
+    background-size: auto 200%;
+    background-position: 50% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .branch-scene .perched-bird {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--land-angle));
+  }
+
+  .stamp-birds img {
+    transition-duration: .01ms;
+  }
+}
+
+.course-section {
+  background-color: #fffaf6;
+  background-image: url('../images/pastel background.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@font-face {
+  font-family: 'SchoolSafetyRoundedSmile';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-R.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SchoolSafetyRoundedSmile';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+.hero-copy h1,
+.section-title h2,
+.stamp-copy h2,
+.place-panel h3,
+.site-footer p,
+.subpage-hero h1,
+.subpage-content h2 {
+  font-family: 'SchoolSafetyRoundedSmile', sans-serif;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Pretendard', sans-serif;
+}
+
+.picks .section-title .picks-hat {
+  width: 102px;
+  height: auto;
+  margin: 0 auto 2px;
+}
+
+.hero-footprints {
+  transform: translateY(100px);
+}
+
+.hero-footprints {
+  width: clamp(200px, 24vw, 350px);
+}
+
+@media (max-width: 800px) {
+  .hero-footprints {
+    width: 224px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-footprints {
+    width: 176px;
+  }
+}
+
+/* Restore footprint image to its pre-enlargement size. */
+.hero-footprints {
+  width: clamp(100px, 12vw, 175px);
+}
+
+@media (max-width: 800px) {
+  .hero-footprints {
+    width: 112px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-footprints {
+    width: 88px;
+  }
+}
+
+.map-section .section-title h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35em;
+}
+
+.map-section .section-title h2 img {
+  width: auto;
+  height: 1em;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.course-section .section-title h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35em;
+  text-align: center;
+}
+
+.course-section .section-title h2 img {
+  width: auto;
+  height: 1em;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+
+.course-actions>.pill-button {
+  font-size: 15px;
+}
+
+.course-actions>.pill-button {
+  margin-inline: auto;
+}
+
+.event-section .section-title .event-hat {
+  width: 102px;
+  height: auto;
+  margin: 0 auto 2px;
+}
+
+.stamp-copy .stamp-mascot {
+  position: absolute;
+  z-index: 2;
+  top: -60px;
+  right: 0;
+  width: clamp(170px, 11vw, 210px);
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .stamp-copy .stamp-mascot {
+    top: -58px;
+    right: 3%;
+    width: 170px;
+  }
+}
+
+/* Stamp photo cards enlarged */
+.stamp-photos img {
+  height: 180px;
+}
+
+@media (max-width: 480px) {
+  .stamp-photos img {
+    height: 150px;
+  }
+}
+
+
+/* Bird beside the festival heading */
+.event-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.event-heading-row h2 {
+  margin: 0;
+}
+
+.event-heading-row .event-bird {
+  width: 82px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .event-heading-row {
+    gap: 24px;
+  }
+
+  .event-heading-row .event-bird {
+    width: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-heading-row {
+    gap: 12px;
+  }
+
+  .event-heading-row h2 {
+    font-size: 23px;
+  }
+
+  .event-heading-row .event-bird {
+    width: 48px;
+  }
+}
+
+
+/* Restore centered festival title; position the bird relative to it */
+.event-section .section-title {
+  position: relative;
+}
+
+.event-section .section-title h2 {
+  display: block;
+  text-align: center;
+  margin: 7px 0 6px;
+}
+
+.event-section .section-title .event-bird {
+  position: absolute;
+  width: 82px;
+  height: auto;
+  left: calc(50% + 390px);
+  top: 42px;
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .event-section .section-title .event-bird {
+    left: auto;
+    right: 7%;
+  }
+}
+
+@media (max-width: 800px) {
+  .event-section .section-title .event-bird {
+    width: 64px;
+    right: 3%;
+    top: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-section .section-title .event-bird {
+    width: 48px;
+    right: 0;
+    top: 34px;
+  }
+}
+
+
+/* Match the festival bird scale to the stamp mascot without changing the heading */
+.event-section .section-title .event-bird {
+  width: clamp(170px, 11vw, 210px);
+}
+
+@media (max-width: 800px) {
+  .event-section .section-title .event-bird {
+    width: 170px;
+  }
+}
+
+
+/* Align the bird with the top paper boundary and reduce its scale by 20px */
+.event-section .section-title .event-bird {
+  width: clamp(150px, 11vw, 190px);
+  top: -70px;
+}
+
+
+@media (max-width: 480px) {
+  .event-section .section-title .event-bird {
+    width: 150px;
+    top: -70px;
+  }
+}
+
+
+/* Goods title ornaments and expanded product captions */
+.goods-section .section-title h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35em;
+}
+
+.goods-section .section-title h2 .goods-flourish {
+  width: auto;
+  height: 1em;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+
+.goods-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.goods-grid a b {
+  display: block;
+  font-size: 20px;
+  line-height: 1.4;
+  padding: 14px 12px 2px;
+}
+
+.goods-grid a span {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 4.5em;
+  padding: 2px 12px 18px;
+}
+
+@media (max-width: 480px) {
+  .goods-section .section-title h2 {
+    gap: .2em;
+    font-size: 24px;
+  }
+
+  .goods-section .section-title h2 .goods-flourish {
+    height: .9em;
+  }
+
+  .goods-grid a b {
+    font-size: 20px;
+  }
+
+  .goods-grid a span {
+    font-size: 16px;
+    min-height: 0;
+  }
+}
+
+
+/* Footer order and compact slogan per reference */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  padding: 28px 24px 20px;
+}
+
+.site-footer p {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0 0 4px;
+}
+
+.site-footer img.footer-logo {
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 8px;
+}
+
+.site-footer img.footer-text {
+  width: min(319px, 82vw);
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+
+/* Footer uses a solid peach background with only logo and footer text */
+.site-footer {
+  background: #FBCFB9;
+}
+
+.site-footer:before {
+  display: none;
+}
+
+.site-footer p {
+  display: none;
+}
+
+.site-footer img.footer-logo {
+  margin-bottom: 10px;
+}
+
+
+/* Shift the header brand logo 50px to the right */
+.site-header .brand {
+  transform: translateX(50px);
+}
+
+
+/* Center the four subpage links and match the district hover treatment */
+.site-header {
+  position: sticky;
+}
+
+.site-header nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 12px;
+}
+
+.site-header nav a {
+  padding: 9px 15px;
+  border-radius: 22px;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.site-header nav a:after {
+  display: none;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  background: #5f846b;
+  color: #fff;
+  outline: none;
+}
+
+@media (max-width: 800px) {
+  .site-header nav {
+    position: static;
+    left: auto;
+    transform: none;
+    gap: 8px 10px;
+  }
+
+  .site-header nav a {
+    padding: 6px 10px;
+  }
+}
+
+
+/* Keep the brand safely inset and keep navigation labels on one row */
+.site-header {
+  position: sticky;
+}
+
+.site-header .brand {
+  position: absolute;
+  left: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.site-header nav {
+  width: max-content;
+  max-width: calc(100vw - 260px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 14px;
+}
+
+.site-header nav a {
+  white-space: nowrap;
+  padding: 10px 20px;
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    position: sticky;
+  }
+
+  .site-header .brand {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    flex: 0 0 auto;
+  }
+
+  .site-header nav {
+    position: static;
+    width: auto;
+    max-width: 75%;
+    transform: none;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .site-header nav a {
+    padding: 6px 10px;
+  }
+}
+
+
+/* Move the navigation group right by 100px without changing button sizing or gaps */
+@media (min-width: 801px) {
+  .site-header nav {
+    transform: translateX(calc(-50% + 100px));
+  }
+}
+
+
+/* Additional 100px navigation shift; preserve button sizes and spacing */
+@media (min-width: 801px) {
+  .site-header nav {
+    transform: translateX(calc(-50% + 200px));
+  }
+}
+
+
+/* Third 100px navigation shift; button sizing and gaps stay unchanged */
+@media (min-width: 801px) {
+  .site-header nav {
+    transform: translateX(calc(-50% + 300px));
+  }
+}
+
+
+/* Move the desktop brand 300px right from its 100px inset */
+@media (min-width: 801px) {
+  .site-header .brand {
+    left: 400px;
+  }
+}
+
+
+/* Nudge the desktop brand 50px left */
+@media (min-width: 801px) {
+  .site-header .brand {
+    left: 350px;
+  }
+}
+
+/* Slightly soften the three companion-course photos */
+.course-panel[data-course-panel="companions"] .course-card img {
+  opacity: .8;
+}
+
+/* Place the footer panorama behind the goods section, keeping its heading in the white area */
+.goods-section {
+  background-color: #fff;
+  background-image: url('../images/footer.jpg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% 100%;
+}
+
+@media (max-width: 800px) {
+  .goods-section {
+    background-size: 100% 100%;
+    background-position: center bottom;
+  }
+}
+
+/* Center the logo and navigation together without changing navigation spacing */
+@media (min-width: 801px) {
+  .site-header {
+    left: 50%;
+    width: max-content;
+    max-width: 94vw;
+    transform: translateX(-50%);
+    justify-content: flex-start;
+    gap: 30px;
+  }
+
+  .site-header .brand {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    flex: 0 0 auto;
+  }
+
+  .site-header nav {
+    position: relative;
+    left: auto;
+    width: max-content;
+    max-width: none;
+    transform: none;
+    flex: 0 0 auto;
+  }
+}
+
+/* Raise the custom-course background artwork by 30px */
+.course-section {
+  background-position: center calc(50% - 30px);
+}
+
+
+/* Shorter footer and lower panorama placement */
+.site-footer {
+  min-height: 165px;
+  padding: 8px 24px 10px;
+}
+
+.site-footer img.footer-logo {
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+.goods-section {
+  background-position: center calc(100% + 60px);
+}
+
+@media (max-width: 800px) {
+  .goods-section {
+    background-position: center calc(100% + 40px);
+  }
+
+  .site-footer {
+    min-height: 155px;
+    padding: 8px 20px;
+  }
+
+  .site-footer img.footer-logo {
+    width: 140px;
+  }
+}
+
+
+/* Full-width supplied panorama directly above the footer */
+.goods-section {
+  background-image: none;
+  background-color: #fff;
+}
+
+.footer-panorama {
+  width: 100%;
+  line-height: 0;
+  background: #fff;
+}
+
+.footer-panorama img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .footer-panorama img {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/* Match the updated transparent branch to the supplied hero mockup */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -20px;
+    top: -70px;
+    bottom: auto;
+    width: clamp(700px, 58vw, 1120px);
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
+
+
+/* Shift the branch scene down 200px and left 50px */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -70px;
+    top: 130px;
+  }
+}
+
+
+/* Move the branch scene an additional 200px down */
+@media (min-width: 801px) {
+  .branch-scene {
+    top: 330px;
+  }
+}
+
+
+/* Scale the desktop branch scene and its perched birds to two-thirds */
+@media (min-width: 801px) {
+  .branch-scene {
+    width: clamp(467px, 38.67vw, 747px);
+  }
+
+  .branch-scene .perched-bird {
+    width: clamp(39px, 4.67vw, 60px);
+  }
+}
+
+
+/* Move the desktop branch scene an additional 300px down */
+@media (min-width: 801px) {
+  .branch-scene {
+    top: 630px;
+  }
+}
+
+
+/* Move the stamp mascot 50px up and right */
+.stamp-copy .stamp-mascot {
+  top: -110px;
+  right: -50px;
+}
+
+@media (max-width: 800px) {
+  .stamp-copy .stamp-mascot {
+    top: -108px;
+    right: -35px;
+  }
+}
+
+
+/* Use the supplied sitting bird and move it 100px up, 50px right */
+.event-section .section-title .event-bird {
+  top: -170px;
+  left: calc(50% + 440px);
+}
+
+/* 새 둥실둥실 애니메이션 */
+.event-section .section-title .event-bird {
+  animation: birdFloat 3s ease-in-out infinite;
+}
+
+/* 위아래로 자연스럽게 움직이기 */
+@keyframes birdFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .event-section .section-title .event-bird {
+    left: auto;
+    right: calc(7% - 50px);
+  }
+}
+
+@media (max-width: 800px) {
+  .event-section .section-title .event-bird {
+    right: calc(3% - 50px);
+    top: -170px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-section .section-title .event-bird {
+    right: -50px;
+    top: -170px;
+  }
+}
+
+
+/* Bird landing positions matched to the branch mockup */
+.branch-scene .bird-white {
+  --landing-x: 60%;
+  --landing-y: 38%;
+  --land-angle: -3deg;
+  animation-delay: .45s;
+}
+
+.branch-scene .bird-brown {
+  --landing-x: 52%;
+  --landing-y: 61%;
+  --land-angle: 0deg;
+  animation-delay: 1.05s;
+}
+
+.branch-scene .perched-bird {
+  width: clamp(54px, 5.2vw, 100px);
+  animation-duration: 3.8s;
+}
+
+
+/* Keep the branch fixed and raise both birds' final perch positions by 50px */
+.branch-scene .bird-white {
+  --landing-y: calc(38% - 50px);
+}
+
+.branch-scene .bird-brown {
+  --landing-y: calc(61% - 50px);
+}
+
+
+/* Lower only the omong bird's final perch by 20px */
+.branch-scene .bird-white {
+  --landing-y: calc(38% - 30px);
+}
+
+
+/* Move only the stamp-title mascot 50px left */
+.stamp-copy .stamp-mascot {
+  right: 0;
+
+  /* 새 둥실둥실 애니메이션 */
+  animation: birdFloat 3s ease-in-out infinite;
+}
+
+@media (max-width: 800px) {
+  .stamp-copy .stamp-mascot {
+    right: 15px;
+  }
+}
+
+
+/* Match the footer background to the site's green buttons */
+.site-footer {
+  background: #78977d;
+}
+
+
+/* Match goods descriptions to the goods overview button */
+.goods-grid a span {
+  background-color: #f8d2bd;
+}
+
+.goods-grid a b {
+  background-color: #f8d2bd;
+}
+
+/* Shift the complete goods content group down by 50px */
+.goods-section>.section-title,
+.goods-section>.goods-grid,
+.goods-section>.pill-button {
+  position: relative;
+  top: 50px;
+}
+
+
+/* Restore the branch and birds to their positions before the recent nudges */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -20px;
+    top: -70px;
+  }
+}
+
+.branch-scene .bird-white {
+  --landing-x: 60%;
+  --landing-y: 38%;
+}
+
+.branch-scene .bird-brown {
+  --landing-x: 52%;
+  --landing-y: 61%;
+}
+
+
+/* Undo the position restore and return to the previous branch and bird placement */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -70px;
+    top: 630px;
+  }
+}
+
+.branch-scene .bird-white {
+  --landing-y: calc(38% - 30px);
+}
+
+.branch-scene .bird-brown {
+  --landing-y: calc(61% - 50px);
+}
+
+
+/* Lower the brown bird's landing position by 10px */
+.branch-scene .bird-brown {
+  --landing-y: calc(61% - 40px);
+}
+
+
+/* Raise the brown bird 5px from its current position */
+.branch-scene .bird-brown {
+  --landing-y: calc(61% - 45px);
+}
+
+/* Resize the branch scene to two-thirds and shift it left 100px and down 300px */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -170px;
+    top: 930px;
+    width: clamp(311px, 25.78vw, 498px);
+  }
+}
+
+
+/* Match the branch position to the supplied reference image */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -20px;
+    top: -70px;
+  }
+}
+
+
+/* Match branch scale and position to the supplied reference image */
+@media (min-width: 801px) {
+  .branch-scene {
+    left: -20px;
+    top: -70px;
+    width: clamp(467px, 38.67vw, 747px);
+  }
+}
+
+
+/* Hide the branch image while leaving the bird decorations unchanged */
+.branch-scene .branch {
+  display: none;
+}
+
+
+/* Hide the complete branch and bird decoration scene */
+.branch-scene {
+  display: none;
+}
+
+
+/* Show the supplied transparent namu at the mockup position; keep bird decorations hidden */
+@media (min-width: 801px) {
+  .branch-scene {
+    display: block;
+    left: -20px;
+    top: -70px;
+    width: clamp(467px, 38.67vw, 747px);
+  }
+}
+
+.branch-scene .branch {
+  display: block;
+}
+
+.branch-scene .perched-bird {
+  display: none;
+}
+
+
+/* Fresh branch placement based on the supplied mockup */
+.namu-branch {
+  position: absolute;
+  z-index: 2;
+  left: -20px;
+  top: -110px;
+  width: clamp(700px, 58vw, 1120px);
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .namu-branch {
+    left: -8vw;
+    top: -40px;
+    width: 92vw;
+  }
+}
+
+
+/* Reduce namu.png to one-third while preserving its position */
+.namu-branch {
+  width: clamp(233px, 19.33vw, 373px);
+}
+
+@media (max-width: 800px) {
+  .namu-branch {
+    width: 30.67vw;
+  }
+}
+
+
+/* Lower namu.png to align beside the Dongnae 12 title */
+.namu-branch {
+  top: calc(100% - 120px);
+}
+
+@media (max-width: 800px) {
+  .namu-branch {
+    top: calc(100% - 60px);
+  }
+}
+
+
+/* Enlarge namu.png by one-third from its current size */
+.namu-branch {
+  width: clamp(311px, 25.77vw, 497px);
+}
+
+@media (max-width: 800px) {
+  .namu-branch {
+    width: 40.89vw;
+  }
+}
+
+
+/* Place babsae on the lower branch position shown in the reference */
+.namu-scene {
+  position: absolute;
+  z-index: 2;
+  left: -20px;
+  top: calc(100% - 120px);
+  width: clamp(311px, 25.77vw, 497px);
+  pointer-events: none;
+}
+
+.namu-scene .namu-branch {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.namu-scene .namu-bird {
+  position: absolute;
+  left: 52%;
+  top: 61%;
+  width: 16%;
+  height: auto;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 800px) {
+  .namu-scene {
+    left: -8vw;
+    top: calc(100% - 60px);
+    width: 40.89vw;
+  }
+}
+
+
+/* Raise babsae 50px and animate a gentle landing on the branch */
+.namu-scene .namu-bird {
+  top: calc(61% - 50px);
+  transform-origin: center bottom;
+  animation: namu-bird-land 3.2s cubic-bezier(.18, .68, .24, 1) .35s both;
+}
+
+@keyframes namu-bird-land {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 170px)) rotate(-8deg);
+  }
+
+  78% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + 4px)) rotate(2deg);
+  }
+
+  90% {
+    transform: translate(-50%, -50%) rotate(-1deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .namu-scene .namu-bird {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/* Preserve babsae's source transparency and raise its landing point another 20px */
+.namu-scene .namu-bird {
+  top: calc(61% - 70px);
+}
+
+@keyframes namu-bird-land {
+  0% {
+    transform: translate(-50%, calc(-50% - 170px)) rotate(-8deg);
+  }
+
+  78% {
+    transform: translate(-50%, calc(-50% + 4px)) rotate(2deg);
+  }
+
+  90% {
+    transform: translate(-50%, -50%) rotate(-1deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .namu-scene .namu-bird {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/* Keep babsae fully opaque above the branch and lower its perch by 5px */
+.namu-scene .namu-branch {
+  position: relative;
+  z-index: 1;
+}
+
+.namu-scene .namu-bird {
+  z-index: 2;
+  opacity: 1;
+  top: calc(61% - 65px);
+}
+
+
+/* Place omong on the upper branch perch shown in the reference */
+.namu-scene .namu-omong {
+  position: absolute;
+  z-index: 2;
+  left: 60%;
+  top: 38%;
+  width: 16%;
+  height: auto;
+  max-width: none;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transform-origin: center bottom;
+  animation: namu-bird-land 3.2s cubic-bezier(.18, .68, .24, 1) .75s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .namu-scene .namu-omong {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/* Raise omong 50px at its final perch */
+.namu-scene .namu-omong {
+  top: calc(38% - 50px);
+}
+
+
+/* Lower omong 10px from its current perch */
+.namu-scene .namu-omong {
+  top: calc(38% - 40px);
+}
+
+
+/* Lower omong 5px from its current perch */
+.namu-scene .namu-omong {
+  top: calc(38% - 35px);
+}
+
+
+/* Hanok line-art decoration below the festival photo row */
+.event-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.event-section .event-hanok {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: min(40vw, 650px);
+  height: auto;
+  opacity: .4;
+  pointer-events: none;
+
+  /* 애니메이션 */
+  opacity: 0;
+  animation: hanokFade 2s ease-out forwards;
+}
+
+@keyframes hanokFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
+
+.event-section>.section-title,
+.event-section>.event-grid,
+.event-section>.pill-button {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 800px) {
+  .event-section .event-hanok {
+    width: min(62vw, 380px);
+  }
+}
+
+
+/* Hakchoom decoration at the lower-right of the festival section */
+.event-section .event-hakchoom {
+  position: absolute;
+  z-index: 0;
+  right: 18px;
+  bottom: 12px;
+  width: min(18vw, 260px);
+  height: auto;
+  opacity: .8;
+  pointer-events: none;
+
+  /* 애니메이션 */
+  transform-origin: center bottom;
+  animation: hakchoomDance 2.5s ease-in-out infinite;
+}
+
+/* 좌우로 춤추듯 움직이기 */
+@keyframes hakchoomDance {
+
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  25% {
+    transform: rotate(-5deg) translateY(-4px);
+  }
+
+  75% {
+    transform: rotate(5deg) translateY(-4px);
+  }
+}
+
+
+@media (max-width: 800px) {
+  .event-section .event-hakchoom {
+    right: 8px;
+    bottom: 8px;
+    width: min(30vw, 150px);
+  }
+}
+
+
+/* Babsae decoration at the map's lower-left corner */
+.map-art>.map-babsae {
+  position: absolute;
+  z-index: 1;
+  left: -7%;
+  bottom: -8%;
+  width: min(13vw, 135px);
+  max-width: none;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.map-art .district {
+  z-index: 2;
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-babsae {
+    left: -4%;
+    bottom: -5%;
+    width: 92px;
+  }
+}
+
+
+/* Place the babsae mascot just below and to the right of AREA GUIDE */
+.place-panel-head {
+  position: relative;
+  min-height: 105px;
+  padding-right: 92px;
+}
+
+.place-panel-head>.map-babsae {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 22px;
+  width: 82px;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .place-panel-head {
+    min-height: 88px;
+    padding-right: 72px;
+  }
+
+  .place-panel-head>.map-babsae {
+    top: 18px;
+    width: 64px;
+  }
+}
+
+
+/* Widen the area guide card and align its heading beside babsae */
+@media (min-width: 801px) {
+  .map-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(340px, .72fr);
+    gap: 35px;
+  }
+}
+
+.place-panel-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  align-items: center;
+  min-height: 0;
+  padding: 0;
+}
+
+.place-panel-head>span {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.place-panel-head>h3 {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 2px 0 14px;
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+.place-panel-head>.map-babsae {
+  position: static;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: center;
+  align-self: center;
+  width: 82px;
+  height: auto;
+  max-width: none;
+}
+
+@media (max-width: 800px) {
+  .map-layout .place-panel {
+    width: calc(100% + 32px);
+    max-width: 640px;
+    margin-left: -16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .place-panel-head {
+    grid-template-columns: minmax(0, 1fr) 58px;
+    column-gap: 8px;
+  }
+
+  .place-panel-head>h3 {
+    font-size: 20px;
+  }
+
+  .place-panel-head>.map-babsae {
+    width: 58px;
+  }
+}
+
+
+/* Place san.png immediately to the left of the map artwork */
+.map-art>.map-san {
+  position: absolute;
+  z-index: 1;
+  left: -92px;
+  bottom: 24%;
+  width: 78px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  pointer-events: none;
+
+  /* 애니메이션 */
+  animation: mountainFloat 3s ease-in-out infinite;
+}
+
+/* 산이 위아래로 움직이는 모션 */
+@keyframes mountainFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-san {
+    left: -52px;
+    bottom: 20%;
+    width: 54px;
+  }
+}
+
+
+/* Enlarge san.png twofold and raise it 100px */
+.map-art>.map-san {
+  bottom: calc(24% + 100px);
+  width: 156px;
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-san {
+    bottom: calc(20% + 100px);
+    width: 108px;
+  }
+}
+
+
+/* Move san.png 50px farther left */
+.map-art>.map-san {
+  left: -142px;
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-san {
+    left: -102px;
+  }
+}
+
+
+/* Raise san.png another 100px */
+.map-art>.map-san {
+  bottom: calc(24% + 200px);
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-san {
+    bottom: calc(20% + 200px);
+  }
+}
+
+
+/* Place san2 below san.png and 60px farther left */
+.map-art>.map-san2 {
+  position: absolute;
+  z-index: 1;
+  left: -202px;
+  top: calc(76% - 190px);
+  width: 156px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  pointer-events: none;
+
+  /* 애니메이션 */
+  animation: mountainFloat 3.5s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-san2 {
+    left: -162px;
+    top: calc(80% - 190px);
+    width: 108px;
+  }
+}
+
+
+/* Move san2 another 60px left */
+.map-art>.map-san2 {
+  left: -262px;
+}
+
+@media (max-width: 800px) {
+  .map-art>.map-san2 {
+    left: -222px;
+  }
+}
