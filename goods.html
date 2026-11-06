@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 동래올래 굿즈샵 </title>
+    <link rel="stylesheet" href="css/style.css">
+<style>
+
+/* Goods page only: shared header/footer styles are preserved. */
+@font-face{font-family:'SchoolSafetyRoundedSmile';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-R.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'SchoolSafetyRoundedSmile';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');font-weight:700;font-display:swap}
+.shop-main{color:#493532}
+.shop-flower{display:inline-block;width:.9em;height:.9em;object-fit:contain;flex-shrink:0}
+.shop-photo:focus-visible{outline:3px solid #c56442;outline-offset:5px}
+.shop-catalog{background:#fff2e7 url('images8/hanzi_background.png') center top/100% auto;padding:150px 24px 190px}
+.shop-title{display:flex;align-items:center;justify-content:center;gap:.12em;margin:0 0 140px;font:700 clamp(30px,2.3vw,44px)/1.3 'SchoolSafetyRoundedSmile',sans-serif}
+.shop-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:130px 100px;max-width:1160px;margin:auto}
+.shop-product{margin:0;min-width:0;text-align:center}
+.shop-photo{position:relative;aspect-ratio:530/481;overflow:hidden;background:#fff1e7}
+.shop-photo img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
+.shop-photo .shop-alternate{object-fit:contain;opacity:0;background:#fff1e7}
+.shop-photo:hover .shop-alternate,.shop-photo:focus .shop-alternate{opacity:1}
+.shop-photo:hover .shop-original,.shop-photo:focus .shop-original{opacity:0}
+.shop-product figcaption{background:#fff1e8;padding:12px 8px 22px}
+.shop-product h3{font:700 clamp(21px,1.9vw,36px)/1.35 'SchoolSafetyRoundedSmile',sans-serif;margin:0 0 10px;word-break:keep-all}
+.shop-product p{font:700 clamp(20px,1.8vw,34px)/1.5 'Pretendard',sans-serif;margin:0}
+@media(max-width:800px){.shop-catalog{padding:70px 24px 100px}.shop-title{margin-bottom:65px}.shop-products{gap:65px 28px}}
+@media(max-width:480px){.shop-products{grid-template-columns:1fr;max-width:530px;gap:48px}.shop-catalog{padding:60px 24px 80px}.shop-title{margin-bottom:45px}.shop-product h3{font-size:25px}.shop-product p{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.shop-photo img{transition:none}}
+
+
+/* Two equally sized slides with fixed arrows and softly blending backgrounds. */
+.shop-banner{position:relative;isolation:isolate;aspect-ratio:1918/929;overflow:hidden;text-align:center;background:#f5e7d9 url('images8/Rectangle_332.png') center/100% 100% no-repeat}
+.shop-banner::before{content:'';position:absolute;inset:0;background:#dfbba5 url('images8/Rectangle_330.png') center/100% 100% no-repeat;opacity:0;transition:opacity 1.2s ease-in-out;pointer-events:none}
+.shop-banner.is-detail::before{opacity:1}
+.shop-banner-track{position:absolute;inset:0 auto 0 0;width:200%;display:flex;transform:translateX(0);transition:transform 1.2s cubic-bezier(.45,0,.2,1);will-change:transform}
+.shop-banner.is-detail .shop-banner-track{transform:translateX(-50%)}
+.shop-banner-panel{position:relative;flex:0 0 50%;height:100%}
+.shop-banner-photo{position:absolute;left:16.11%;top:8.4%;width:67.78%;aspect-ratio:1300/667}
+.shop-banner-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.shop-banner-details .shop-banner-photo>img{opacity:0;transition:opacity .65s ease}
+.shop-banner-details .shop-banner-photo>img.is-current{opacity:1}
+.shop-banner h1{position:absolute;z-index:1;left:7%;right:7%;bottom:7%;margin:0;display:flex;align-items:center;justify-content:center;gap:.15em;font:700 clamp(16px,3.4vw,64px)/1.3 'SchoolSafetyRoundedSmile',sans-serif;letter-spacing:-.025em}
+.shop-banner-arrow{position:absolute;z-index:2;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:clamp(32px,5vw,72px);height:clamp(32px,5vw,72px);padding:0;border:0;border-radius:50%;background:#facbb1;color:#513c32;font:700 clamp(20px,3vw,44px)/1 sans-serif;cursor:pointer;transition:background-color 1.2s ease,color 1.2s ease,box-shadow .2s ease}
+.shop-banner-prev{left:2.7%}.shop-banner-next{right:2.7%}
+.shop-banner.is-detail .shop-banner-arrow{background:#513c32;color:#ffe7d6}
+.shop-banner-arrow:hover{box-shadow:0 0 0 4px #ffffff66}
+.shop-banner-arrow:focus-visible{outline:3px solid #bd674a;outline-offset:5px}
+@media(max-width:600px){.shop-banner h1{left:8%;right:8%;font-size:clamp(13px,3.4vw,21px)}.shop-banner h1 span{word-break:keep-all}.shop-banner-prev{left:2%}.shop-banner-next{right:2%}}
+@media(prefers-reduced-motion:reduce){.shop-banner-track,.shop-banner::before,.shop-banner-arrow,.shop-banner-details .shop-banner-photo>img{transition:none}}
+
+
+/* Goods cards enter gently as the visitor scrolls down. */
+.shop-reveal-ready .shop-product{opacity:0;transform:translateY(35px) scale(.96);transition:opacity 1.15s ease,transform 1.35s cubic-bezier(.18,.7,.25,1)}
+.shop-reveal-ready .shop-product:nth-child(even){transition-delay:.18s}
+.shop-reveal-ready .shop-product.is-revealed{opacity:1;transform:translateY(0) scale(1)}
+.shop-reveal-ready .shop-product:focus-within{opacity:1;transform:none;transition-delay:0s}
+@media(max-width:480px){.shop-reveal-ready .shop-product:nth-child(even){transition-delay:0s}}
+@media(prefers-reduced-motion:reduce){.shop-reveal-ready .shop-product{opacity:1;transform:none;transition:none}}
+@media print{.shop-reveal-ready .shop-product{opacity:1;transform:none;transition:none}}
+
+</style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header class="site-header"><a class="brand" href="index.html"><img src="images/main logo.svg" alt="동래랑"></a>
+            <nav aria-label="주요 메뉴"><a href="about.html">동래에 대하여</a><a href="events.html">축제·행사 안내</a><a
+                    href="stamp.html">스탬프투어</a><a href="goods.html">굿즈샵</a></nav>
+        </header>
+        <main class="shop-main">
+  <section class="shop-banner" aria-labelledby="shop-banner-title" aria-roledescription="슬라이드">
+    <div class="shop-banner-track" id="shop-banner-track">
+      <div class="shop-banner-panel shop-banner-overview" role="group" aria-label="1 / 2: 피규어 전체 세트" aria-hidden="false">
+        <div class="shop-banner-photo"><img src="images8/Rectangle_334.png" alt="뱁례와 오몽 피규어 랜덤세트 전체 구성" width="1300" height="667"></div>
+      </div>
+      <div class="shop-banner-panel shop-banner-details" role="group" aria-label="2 / 2: 피규어 단독샷, 2초 간격 자동 전환" aria-hidden="true" inert>
+        <div class="shop-banner-photo">
+          <img src="images8/Rectangle_331.png" class="is-current" alt="뱁례와 오몽 피규어 세트 단독샷" width="1300" height="667">
+          <img src="images8/Rectangle_333.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_335.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_336.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_337.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_338.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_339.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_340.png" class="" alt="" width="1300" height="667">
+          <img src="images8/Rectangle_341.png" class="" alt="" width="1300" height="667">
+        </div>
+      </div>
+    </div>
+    <h1 id="shop-banner-title"><img class="shop-flower" src="images8/cf1.png" alt="" aria-hidden="true"><span>뱁례&오몽 피규어 랜덤세트 NEW 출시!</span><img class="shop-flower" src="images8/cf1.png" alt="" aria-hidden="true"></h1>
+    <button class="shop-banner-arrow shop-banner-prev" type="button" aria-label="이전 배너" aria-controls="shop-banner-track"><span aria-hidden="true">←</span></button>
+    <button class="shop-banner-arrow shop-banner-next" type="button" aria-label="다음 배너" aria-controls="shop-banner-track"><span aria-hidden="true">→</span></button>
+  </section>
+  <section class="shop-catalog" aria-labelledby="shop-title">
+    <h2 class="shop-title" id="shop-title"><img class="shop-flower" src="images8/cf2.png" alt="" aria-hidden="true">판매굿즈들<img class="shop-flower" src="images8/cf2.png" alt="" aria-hidden="true"></h2>
+    <div class="shop-products">
+      <figure class="shop-product">
+        <div class="shop-photo" tabindex="0" aria-label="캔버스백, 마우스를 올리거나 초점을 맞추면 다른 사진 표시">
+          <img class="shop-original" src="images8/Rectangle_243.png" alt="캔버스백" width="530" height="481" loading="lazy">
+          <img class="shop-alternate" src="images8/Rectangle_244.png" alt="캔버스백 다른 모습" width="530" height="481" loading="lazy">
+        </div>
+        <figcaption><h3>캔버스백</h3><p>10,000원</p></figcaption>
+      </figure>
+      <figure class="shop-product">
+        <div class="shop-photo" tabindex="0" aria-label="데일리 다이어리, 마우스를 올리거나 초점을 맞추면 다른 사진 표시">
+          <img class="shop-original" src="images8/Rectangle_249.png" alt="데일리 다이어리" width="530" height="481" loading="lazy">
+          <img class="shop-alternate" src="images8/Rectangle_246.png" alt="데일리 다이어리 다른 모습" width="530" height="481" loading="lazy">
+        </div>
+        <figcaption><h3>데일리 다이어리</h3><p>8,600원</p></figcaption>
+      </figure>
+      <figure class="shop-product">
+        <div class="shop-photo" tabindex="0" aria-label="봉제인형(모자 탈부착 가능), 마우스를 올리거나 초점을 맞추면 다른 사진 표시">
+          <img class="shop-original" src="images8/Rectangle_250.png" alt="봉제인형(모자 탈부착 가능)" width="530" height="481" loading="lazy">
+          <img class="shop-alternate" src="images8/Rectangle_254.png" alt="봉제인형(모자 탈부착 가능) 다른 모습" width="530" height="481" loading="lazy">
+        </div>
+        <figcaption><h3>봉제인형(모자 탈부착 가능)</h3><p>20,000원</p></figcaption>
+      </figure>
+      <figure class="shop-product">
+        <div class="shop-photo" tabindex="0" aria-label="떡메모지, 마우스를 올리거나 초점을 맞추면 다른 사진 표시">
+          <img class="shop-original" src="images8/Rectangle_251.png" alt="떡메모지" width="530" height="481" loading="lazy">
+          <img class="shop-alternate" src="images8/Rectangle_255.png" alt="떡메모지 다른 모습" width="530" height="481" loading="lazy">
+        </div>
+        <figcaption><h3>떡메모지</h3><p>2,500원</p></figcaption>
+      </figure>
+      <figure class="shop-product">
+        <div class="shop-photo" tabindex="0" aria-label="머그컵, 마우스를 올리거나 초점을 맞추면 다른 사진 표시">
+          <img class="shop-original" src="images8/Rectangle_252.png" alt="머그컵" width="530" height="481" loading="lazy">
+          <img class="shop-alternate" src="images8/Rectangle_256.png" alt="머그컵 다른 모습" width="530" height="481" loading="lazy">
+        </div>
+        <figcaption><h3>머그컵</h3><p>12,000원</p></figcaption>
+      </figure>
+      <figure class="shop-product">
+        <div class="shop-photo" tabindex="0" aria-label="미니피규어(뱁례&오몽 세트), 마우스를 올리거나 초점을 맞추면 다른 사진 표시">
+          <img class="shop-original" src="images8/Rectangle_253.png" alt="미니피규어(뱁례&오몽 세트)" width="530" height="481" loading="lazy">
+          <img class="shop-alternate" src="images8/Rectangle_257.png" alt="미니피규어(뱁례&오몽 세트) 다른 모습" width="530" height="481" loading="lazy">
+        </div>
+        <figcaption><h3>미니피규어(뱁례&오몽 세트)</h3><p>10,000원</p></figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+        <div class="shared-footer-scene" aria-hidden="true">
+  <div class="shared-footer-clouds">
+    <img class="shared-footer-cloud cloud-left" src="images7/cloude1.png" alt="">
+    <img class="shared-footer-cloud cloud-right" src="images7/cloude2.png" alt="">
+  </div>
+  <img class="shared-footer-landscape" src="images7/footer.png" alt="">
+</div>
+<footer class="site-footer unified-footer">
+  <img src="images7/footer logo.svg" alt="동래올래">
+  <small>2026 Dongnae-Ollae. All rights reserved.</small>
+</footer>
+    </div>
+    <script src="js/main.js"></script>
+<script>
+
+(() => {
+  const banner = document.querySelector('.shop-banner');
+  const overview = document.querySelector('.shop-banner-overview');
+  const details = document.querySelector('.shop-banner-details');
+  const slides = [...details.querySelectorAll('img')];
+  const arrows = [...banner.querySelectorAll('.shop-banner-arrow')];
+  let current = 0, detailOpen = false, timer, ready = false;
+  function start() {
+    clearInterval(timer);
+    if (!detailOpen || !ready || document.hidden) return;
+    timer = setInterval(() => {
+      slides[current].classList.remove('is-current');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-current');
+    }, 2000);
+  }
+  function changeBanner() {
+    detailOpen = !detailOpen;
+    banner.classList.toggle('is-detail', detailOpen);
+    overview.setAttribute('aria-hidden', String(detailOpen));
+    details.setAttribute('aria-hidden', String(!detailOpen));
+    overview.inert = detailOpen;
+    details.inert = !detailOpen;
+    if (detailOpen) {
+      slides[current].classList.remove('is-current');
+      current = 0;
+      slides[current].classList.add('is-current');
+    }
+    start();
+  }
+  arrows.forEach(button => button.addEventListener('click', changeBanner));
+  banner.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      changeBanner();
+    }
+  });
+  document.addEventListener('visibilitychange', start);
+  Promise.allSettled(slides.map(image => image.decode())).then(() => {
+    ready = true;
+    start();
+  });
+})();
+</script>
+<script>
+
+(() => {
+  const grid = document.querySelector('.shop-products');
+  if (!grid || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const pending = new Set(grid.querySelectorAll('.shop-product'));
+  let scheduled = false;
+  function reveal(card) {
+    card.classList.add('is-revealed');
+    pending.delete(card);
+  }
+  function update() {
+    scheduled = false;
+    // Include already-passed cards after fast scrolling or restoring scroll position.
+    const trigger = window.innerHeight * .88;
+    pending.forEach(card => {
+      if (card.getBoundingClientRect().top < trigger) reveal(card);
+    });
+    if (!pending.size) {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      window.removeEventListener('pageshow', schedule);
+    }
+  }
+  function schedule() {
+    if (!scheduled) {
+      scheduled = true;
+      window.requestAnimationFrame(update);
+    }
+  }
+  grid.addEventListener('focusin', event => {
+    const card = event.target.closest('.shop-product');
+    if (card) reveal(card);
+  });
+  grid.classList.add('shop-reveal-ready');
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  window.addEventListener('pageshow', schedule);
+  update();
+})();
+</script>
+</body>
+
+</html>
